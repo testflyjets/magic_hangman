@@ -1,0 +1,25 @@
+<%= form_for(@session) do |f| %>
+  <% if @session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+
+      <ul>
+      <% @session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <label>Player:</label>
+  <%= f.text_field :player %><br/>
+  <label>Level:</label>
+  <%= f.radio_button :level, 1, :checked => true %> 
+  <%= label :level_novice, 'Novice (up to 6 letters)' %>
+  <%= f.radio_button :level, 2 %>
+  <%= label :level_expert, 'Expert (7 to 12 letters)' %>
+
+  <div class="actions">
+    <%= f.submit "Play!" %>
+  </div>
+<% end %>
