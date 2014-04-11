@@ -1,0 +1,24 @@
+<div class="header">
+  <h1>Player: <%= current_player %></h1>
+</div>
+
+<div class="play"> 
+  <div class="gallows">
+    gallows!
+  </div>
+
+  <div class="word">
+    <%= @current_category %>
+  </div>
+</div>
+
+<div class="guess">
+  <%= form_tag url: game_guesses_url(@current_game) do %>
+    <%= text_field_tag :guess %>
+    <%= submit_tag "Guess!" %>
+  <% end %>
+</div>
+
+<div class="guesses">
+  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+</div>

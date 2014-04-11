@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+}
+
+.gallows {
+  float: left;
+  width: 25%;;
+  border-right: 2px solid #ccc;
+}
+
+.guess {
+  float: left;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  text-align: center;
+}
+
+.play {
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
+.guesses {
+  width: 100%;
+  text-align: center;
+}
