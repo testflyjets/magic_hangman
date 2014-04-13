@@ -20,7 +20,7 @@ class GuessesController < ApplicationController
       session[:bad_guesses] << guess.upcase
     end
 
-    if session[:bad_guesses].size >= Game::MAX_GUESSES
+    if current_game.game_lost?(bad_guesses.size)
       flash[:notice] = "Oh, no, you lost! The word was: #{@current_game.word}"
       redirect_to new_match_path
     elsif current_game.word_guessed?(good_guesses)

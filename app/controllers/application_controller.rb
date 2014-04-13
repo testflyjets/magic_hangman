@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
     session[:good_guesses]
   end
 
+  def bad_guesses
+    session[:bad_guesses]
+  end
+  
   def all_guesses
     @all_guesses ||= session[:bad_guesses] + session[:good_guesses]
   end

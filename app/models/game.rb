@@ -35,4 +35,8 @@ class Game < ActiveRecord::Base
   def word_guessed?(good_guesses)
     word_choice.guessed?(good_guesses)
   end
+
+  def game_lost?(bad_guess_count)
+    bad_guess_count >= MAX_GUESSES
+  end
 end
