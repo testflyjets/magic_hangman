@@ -5,13 +5,34 @@ class Game < ActiveRecord::Base
 
   before_save :select_word
 
+  MAX_GUESSES = 9
+
   def select_word
     words = Word.count
-    rand_id = rand(1..words)
-    self.word_id = Word.find(rand_id).id
+    begin
+      rand_id = rand(1..words)
+      word = Word.find(rand_id)
+    end until word.for_level?(self.match.level)
+    self.word_id = rand_id
+  end
+
+  def word_choice
+    Word.find(self.word_id)
+  end
+
+  def word
+    word_choice.word.upcase if self.word_id
   end
 
   def category
-    Word.find(self.word_id).category if self.word_id
+    word_choice.category if self.word_id
+  end
+
+  def good_guess?(guess)
+    word.include? guess.upcase
+  end
+
+  def word_guessed?(good_guesses)
+    word_choice.guessed?(good_guesses)
   end
 end

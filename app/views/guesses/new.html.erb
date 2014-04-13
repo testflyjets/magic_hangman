@@ -1,24 +1,31 @@
 <div class="header">
   <h1>Player: <%= current_player %></h1>
+  <%= link_to "New Game", '#' %> | 
+  <%= link_to "Quit", root_url %>
 </div>
 
 <div class="play"> 
   <div class="gallows">
-    gallows!
+    <%= image_tag "hangman_#{bad_guess_count}.png" %>
   </div>
 
   <div class="word">
-    <%= @current_category %>
+    <div class="board">
+      <%= word_board(@current_game.word, good_guesses) %>
+    </div>
+    <div class="hint">
+      Category: <%= @current_category %>
+    </div>
   </div>
 </div>
 
 <div class="guess">
-  <%= form_tag url: game_guesses_url(@current_game) do %>
+  <%= form_tag game_guesses_url(@current_game) do %>
     <%= text_field_tag :guess %>
     <%= submit_tag "Guess!" %>
   <% end %>
 </div>
 
 <div class="guesses">
-  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+  <%= guesses(all_guesses) %>
 </div>

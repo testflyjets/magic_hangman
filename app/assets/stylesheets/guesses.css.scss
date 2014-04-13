@@ -2,25 +2,64 @@
   width: 100%;
 }
 
+.play {
+  float: left;
+  width: 100%;
+}
+
 .gallows {
   float: left;
-  width: 25%;;
-  border-right: 2px solid #ccc;
+  width: 35%;
+}
+
+.gallows img {
+  padding: 10px;
+}
+
+.word {
+  float: left;
+}
+
+.board {
+  float: left;
+  width: 100%;
+}
+
+.board .word_letter {
+  float: left;
+  margin-right: 10px;
+  font-size: 48px;
+  padding-bottom: 24px;
+  border-bottom: 4px solid black;
+}
+
+.hint {
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+  color: #666;
 }
 
 .guess {
   float: left;
-  border-bottom: 2px solid #ccc;
   width: 100%;
   text-align: center;
-}
-
-.play {
-  border: 2px solid #ccc;
-  text-align: center;
+  padding-bottom: 10px;
 }
 
 .guesses {
+  float: left;
+  border-top: 2px solid #ccc;
+  padding-top: 10px;
   width: 100%;
   text-align: center;
+}
+
+.guesses span {
+  font-size: 200%;
+  margin-right: 10px;
+}
+
+.guesses span.guessed {
+  color: red;
 }

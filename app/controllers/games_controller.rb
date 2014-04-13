@@ -15,9 +15,7 @@ class GamesController < ApplicationController
   # GET /games/new.json
   def new
     @game = current_match.games.create
-    session[:game_id] = @game.id
-    session[:bad_guesses] = []
-    session[:good_guesses] = []
+    reset_game
 
     respond_to do |format|
       format.html { redirect_to new_game_guess_url(@game)}
@@ -35,5 +33,14 @@ class GamesController < ApplicationController
       format.html { redirect_to current_session }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def reset_game
+    session[:game_id] = @game.id
+    session[:bad_guesses] = []
+    session[:good_guesses] = []
+    Rails.logger.debug "** word is: #{@game.word}"
   end
 end
